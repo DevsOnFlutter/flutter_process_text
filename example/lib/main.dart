@@ -47,15 +47,6 @@ class _HomePageState extends State<HomePage> {
     _processText = FlutterProcessText.getProcessTextStream;
   }
 
-  void initialize() {
-    FlutterProcessText.initialize(
-      showToast: true,
-      confirmationMessage: "Text Added",
-      refreshMessage: "Got all Text",
-      errorMessage: "Some Error",
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,7 +73,7 @@ class _HomePageState extends State<HomePage> {
             child: StreamBuilder<String>(
               stream: _processText,
               builder: (context, snapshot) {
-                return Text('Fetched Data: ${snapshot.data}\n');
+                return Text('Fetched Data: ${snapshot.data}');
               },
             ),
           ),

@@ -9,8 +9,13 @@ class FlutterProcessText {
   static const EventChannel _eventChannel =
       const EventChannel('flutter_process_text_stream');
 
-  static Stream<String> _processTextStream;
+  static Stream<String>? _processTextStream;
 
+  /// Initialize FlutterProcessText Plugins.
+  /// showToast<bool> - if true, will show a toast message, else not.
+  /// set ConfirmationMessage to show a confirmation message in the Toast.
+  /// set refreshMessage to show a refresh message in the Toast.
+  /// set errorMessage to show a error message in the Toast.
   static Future<void> initialize({
     bool showToast = true,
     String confirmationMessage = "Text Fetched",
@@ -25,15 +30,17 @@ class FlutterProcessText {
     });
   }
 
+  /// Get the pending data by refreshing the process text
   static Future<String> get refreshProcessText async {
     return await _channel.invokeMethod('getRefreshProcessText');
   }
 
+  /// Listen to the process text stream to get continuous data.
   static Stream<String> get getProcessTextStream {
     if (_processTextStream == null) {
       _processTextStream =
           _eventChannel.receiveBroadcastStream().map<String>((event) => event);
     }
-    return _processTextStream;
+    return _processTextStream!;
   }
 }
