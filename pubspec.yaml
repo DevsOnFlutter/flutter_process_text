@@ -1,8 +1,9 @@
 name: flutter_process_text
 description: A new Flutter plugin.
 version: 0.0.1
-author:
-homepage:
+author: Divyanshu Shekhar
+homepage: https://github.com/divshekhar/flutter_process_text
+repository: https://github.com/divshekhar/flutter_process_text
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
