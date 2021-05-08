@@ -23,11 +23,20 @@ Flutter Process Text Plugin is known for :
 
 ## Features
 
-✅ &nbsp; Listen process text stream
-✅ &nbsp; Open app from process text intent activity
-✅ &nbsp; Get pending intent text
+✅ &nbsp; Listen process text stream </br>
+✅ &nbsp; Open app from process text intent activity </br>
+✅ &nbsp; Get pending intent text </br>
 
 ---
+
+## Demo
+
+1. App Running | 2. App Not Running
+|---|---|
+
+<a href="https://imgur.com/LNefWto"><img src="https://i.imgur.com/LNefWtol.gif" title="source: imgur.com" /></a> | <a href="https://imgur.com/61AdZwz"><img src="https://i.imgur.com/61AdZwzl.gif" title="source: imgur.com" /></a>
+|---|---|
+
 
 ## Quick start
 
