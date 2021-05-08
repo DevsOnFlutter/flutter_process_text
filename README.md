@@ -31,7 +31,7 @@ Flutter Process Text Plugin is known for :
 
 ## Demo
 
-1. App Running | 2. App Not Running
+App Running |  App Not Running
 |---|---|
 
 <a href="https://imgur.com/LNefWto"><img src="https://i.imgur.com/LNefWtol.gif" title="source: imgur.com" /></a> | <a href="https://imgur.com/61AdZwz"><img src="https://i.imgur.com/61AdZwzl.gif" title="source: imgur.com" /></a>
