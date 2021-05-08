@@ -36,7 +36,7 @@
 
         <activity 
         android:name=".ProcessText" 
-        android:label="FPTP"
+        android:label="Process_Text"
         android:theme="@android:style/Theme.NoDisplay">
           <intent-filter>
               <action android:name="android.intent.action.PROCESS_TEXT" />
