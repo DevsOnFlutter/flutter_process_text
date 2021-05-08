@@ -31,11 +31,12 @@ Flutter Process Text Plugin is known for :
 
 ## Demo
 
-App Running |  App Not Running
+App Running | App Not Running
 |---|---|
 
-<a href="https://imgur.com/LNefWto"><img src="https://i.imgur.com/LNefWtol.gif" title="source: imgur.com" /></a> | <a href="https://imgur.com/61AdZwz"><img src="https://i.imgur.com/61AdZwzl.gif" title="source: imgur.com" /></a>
+<iframe src="https://giphy.com/embed/4Mo3V6BWfFheGSmViM" width="240" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe> |<iframe src="https://giphy.com/embed/omJKH5bAvrnlPB1nRd" width="240" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 |---|---|
+
 
 
 ## Quick start

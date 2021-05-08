@@ -1,6 +1,6 @@
 name: flutter_process_text
 version: 0.0.1
-description: A new Flutter plugin.
+description: Flutter plugin to listen process text stream.
 author: Divyanshu Shekhar
 repository: https://github.com/divshekhar/flutter_process_text
 documentation: https://github.com/divshekhar/flutter_process_text/blob/main/README.md
