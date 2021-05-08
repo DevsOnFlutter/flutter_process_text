@@ -214,4 +214,4 @@ String text = await FlutterProcessText.refreshProcessText;
 
 ## Copyright & License
 
-Code and documentation Copyright (c) 2021 [Divyanshu Shekhar](https://pawan.live). Code released under the [BSD 3-Clause License](./LICENSE).
+Code and documentation Copyright (c) 2021 [Divyanshu Shekhar](https://divyanshushekhar.com). Code released under the [BSD 3-Clause License](./LICENSE).
