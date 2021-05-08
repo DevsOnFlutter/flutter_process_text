@@ -200,10 +200,10 @@ Now use the stream in the `StreamBuilder`.
 
 ```dart
 StreamBuilder<String>(
-    stream: _processText,
-    builder: (context, snapshot) {
-        return Text(snapshot.data);
-    },
+  stream: _processText,
+  builder: (context, snapshot) {
+    return Text('Fetched Data: ${snapshot.data}');
+  },
 ),
 ```
 
