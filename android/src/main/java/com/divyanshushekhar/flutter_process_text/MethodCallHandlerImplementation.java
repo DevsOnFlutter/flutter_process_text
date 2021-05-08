@@ -27,31 +27,26 @@ public class MethodCallHandlerImplementation implements MethodChannel.MethodCall
         this.activity = activity;
     }
 
-
     @Override
     public void onMethodCall(@NonNull MethodCall call, @NonNull MethodChannel.Result result) {
-        if(call.method.equals("initialize")) {
+        if (call.method.equals("initialize")) {
             Map<String, String> arguments = call.arguments();
             // Setting User Initialization coming from flutter side
-            FlutterProcessTextPlugin.setUserInitialization(
-                    Boolean.parseBoolean(arguments.get("showToast")),
-                    arguments.get("confirmationMessage"),
-                    arguments.get("refreshMessage"),
+            FlutterProcessTextPlugin.setUserInitialization(Boolean.parseBoolean(arguments.get("showToast")),
+                    arguments.get("confirmationMessage"), arguments.get("refreshMessage"),
                     arguments.get("errorMessage"));
-        }
-        else if(call.method.equals("getRefreshProcessText")){
+        } else if (call.method.equals("getRefreshProcessText")) {
             try {
                 String textIntent = FlutterProcessTextPlugin.getSavedProcessIntentText();
                 result.success(textIntent);
-                FlutterProcessTextPlugin.showRefreshToast();
                 FlutterProcessTextPlugin.setSavedProcessIntentText(null);
+                FlutterProcessTextPlugin.showRefreshToast();
             } catch (Exception error) {
                 FlutterProcessTextPlugin.showErrorToast();
-                Log.e(TAG,"Method Call Failed");
+                Log.e(TAG, "Method Call Failed");
                 Log.i(TAG, "Make sure you are calling the correct method.");
             }
-        }
-        else {
+        } else {
             result.notImplemented();
         }
     }
