@@ -34,10 +34,9 @@ Flutter Process Text Plugin is known for :
 App Running | App Not Running
 |---|---|
 
-<iframe src="https://giphy.com/embed/4Mo3V6BWfFheGSmViM" width="240" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe> |<iframe src="https://giphy.com/embed/omJKH5bAvrnlPB1nRd" width="240" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+
+![App Running](https://media.giphy.com/media/6UFvIvZUxdn9oniTAH/giphy.gif) | ![AppNotRunning](https://media.giphy.com/media/omJKH5bAvrnlPB1nRd/giphy.gif)
 |---|---|
-
-
 
 ## Quick start
 
