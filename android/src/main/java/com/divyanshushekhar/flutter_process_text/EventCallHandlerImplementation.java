@@ -2,9 +2,9 @@ package com.divyanshushekhar.flutter_process_text;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.widget.Toast;
 
 import io.flutter.Log;
 import io.flutter.plugin.common.EventChannel;
@@ -13,15 +13,16 @@ import io.flutter.plugin.common.EventChannel.EventSink;
 
 public class EventCallHandlerImplementation implements StreamHandler {
 
-    private static final String TAG = "[Flutter Process Text]";
+    private static final String TAG = FlutterProcessTextPlugin.getPluginTag();
 
     private static EventSink mEventSink = null;
     @SuppressLint("StaticFieldLeak")
     private static Activity activity = null;
+    private static Context context = null;
 
-    EventCallHandlerImplementation(Activity activity) {
-        Log.w(TAG,"Event Call Handler Implementation");
+    EventCallHandlerImplementation(Context context,Activity activity) {
         EventCallHandlerImplementation.activity = activity;
+        EventCallHandlerImplementation.context = context;
     }
 
     public static void setActivity(Activity activity) {
@@ -30,31 +31,33 @@ public class EventCallHandlerImplementation implements StreamHandler {
 
     @Override
     public void onListen(Object arguments, EventChannel.EventSink events) {
-        Log.w(TAG,"Listen Added");
         mEventSink = events;
+        Log.w(TAG,"Listening Stream...");
     }
 
     @Override
     public void onCancel(Object arguments) {
-        Log.w(TAG,"Cancel Called");
         mEventSink = null;
+        Log.w(TAG,"Closing Stream...");
     }
 
     public static void onProcessTextChanged() {
-        Log.w(TAG,"Intent Start");
         String textIntent = null;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             textIntent = activity.getIntent().getStringExtra(Intent.EXTRA_PROCESS_TEXT);
         } else {
-            textIntent = "No Data Found";
-            Toast.makeText(activity, "Not Compatible with this Android Version", Toast.LENGTH_SHORT).show();
+            textIntent = null;
+            Log.e(TAG,"Compatibility Issue:");
+            Log.i(TAG,"Make sure device android version >= M (Marshmallow)");
         }
         if(mEventSink != null) {
             mEventSink.success(textIntent);
-            Toast.makeText(activity, "Added to Queue", Toast.LENGTH_LONG).show();
+            FlutterProcessTextPlugin.showConfirmationToast();
+            Log.w(TAG,"Text Fetch Successful.");
         } else {
-            Toast.makeText(activity, "Event Sink called on null", Toast.LENGTH_SHORT).show();
+            FlutterProcessTextPlugin.showErrorToast();
+            Log.e(TAG, "Event Sink was called on null.");
+            Log.i(TAG,"Make sure to navigate where the stream is listening.");
         }
-        Log.w(TAG,"Intent Leave");
     }
 }

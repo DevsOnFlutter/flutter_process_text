@@ -3,7 +3,6 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_process_text/flutter_process_text.dart';
-import 'package:flutter_process_text_example/second_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -40,6 +39,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+    FlutterProcessText.initialize();
     _processText = FlutterProcessText.getProcessTextStream.listen((event) {
       setState(() {
         text = event;
@@ -75,17 +75,6 @@ class _HomePageState extends State<HomePage> {
       body: Column(
         children: [
           Text("\n\nRefreshed Data: $refreshedData\n\n"),
-          ElevatedButton(
-            child: Text("Second Page"),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => SecondPage(text: text),
-                ),
-              );
-            },
-          ),
         ],
       ),
     );

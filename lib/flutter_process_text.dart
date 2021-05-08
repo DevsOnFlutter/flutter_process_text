@@ -11,6 +11,20 @@ class FlutterProcessText {
 
   static Stream<String> _processTextStream;
 
+  static Future<void> initialize({
+    bool showToast = true,
+    String confirmationMessage = "Text Fetched",
+    String refreshMessage = "Refreshed",
+    String errorMessage = "Unable to fetch text!",
+  }) async {
+    return await _channel.invokeMethod('initialize', {
+      'showToast': showToast.toString(),
+      'confirmationMessage': confirmationMessage,
+      'refreshMessage': refreshMessage,
+      'errorMessage': errorMessage,
+    });
+  }
+
   static Future<String> get refreshProcessText async {
     return await _channel.invokeMethod('getRefreshProcessText');
   }

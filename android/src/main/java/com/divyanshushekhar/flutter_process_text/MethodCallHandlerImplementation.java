@@ -2,22 +2,23 @@ package com.divyanshushekhar.flutter_process_text;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import java.util.Map;
+
+import io.flutter.Log;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 
 public class MethodCallHandlerImplementation implements MethodChannel.MethodCallHandler {
 
-    private static final String CHANNEL_ID = "flutter_process_text";
+    private static final String TAG = FlutterProcessTextPlugin.getPluginTag();
+
     private final Context context;
     private Activity activity;
 
     MethodCallHandlerImplementation(Context context, Activity activity) {
-        System.out.println("Method Call Handler Implementation");
         this.context = context;
         this.activity = activity;
     }
@@ -29,16 +30,26 @@ public class MethodCallHandlerImplementation implements MethodChannel.MethodCall
 
     @Override
     public void onMethodCall(@NonNull MethodCall call, @NonNull MethodChannel.Result result) {
-        if(call.method.equals("getRefreshProcessText")){
+        if(call.method.equals("initialize")) {
+            Map<String, String> arguments = call.arguments();
+            // Setting User Initialization coming from flutter side
+            FlutterProcessTextPlugin.setUserInitialization(
+                    Boolean.parseBoolean(arguments.get("showToast")),
+                    arguments.get("confirmationMessage"),
+                    arguments.get("refreshMessage"),
+                    arguments.get("errorMessage"));
+        }
+        else if(call.method.equals("getRefreshProcessText")){
             try {
                 String textIntent = FlutterProcessTextPlugin.getSavedProcessIntentText();
                 result.success(textIntent);
-                Toast.makeText(context, "Fetched All Data", Toast.LENGTH_LONG).show();
+                FlutterProcessTextPlugin.showRefreshToast();
                 FlutterProcessTextPlugin.setSavedProcessIntentText(null);
             } catch (Exception error) {
-                Toast.makeText(context, "Unable to get text!", Toast.LENGTH_LONG).show();
+                FlutterProcessTextPlugin.showErrorToast();
+                Log.e(TAG,"Method Call Failed");
+                Log.i(TAG, "Make sure you are calling the correct method.");
             }
-
         }
         else {
             result.notImplemented();
