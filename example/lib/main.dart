@@ -33,24 +33,24 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   String refreshedData = '';
-  StreamSubscription _processText;
+  Stream<String> _processText;
   String text = '';
 
   @override
   void initState() {
     super.initState();
-    FlutterProcessText.initialize();
-    _processText = FlutterProcessText.getProcessTextStream.listen((event) {
-      setState(() {
-        text = event;
-      });
-    });
+    FlutterProcessText.initialize(
+      showToast: true,
+      confirmationMessage: "Text Added",
+      refreshMessage: "Got all Text",
+      errorMessage: "Some Error",
+    );
+    _processText = FlutterProcessText.getProcessTextStream;
   }
 
   @override
   void dispose() {
     super.dispose();
-    _processText.cancel();
   }
 
   @override
@@ -75,6 +75,12 @@ class _HomePageState extends State<HomePage> {
       body: Column(
         children: [
           Text("\n\nRefreshed Data: $refreshedData\n\n"),
+          StreamBuilder<String>(
+            stream: _processText,
+            builder: (context, snapshot) {
+              return Text(snapshot.data);
+            },
+          ),
         ],
       ),
     );
