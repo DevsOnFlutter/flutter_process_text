@@ -35,7 +35,7 @@ App Running | App Not Running
 |---|---|
 
 
-![App Running](https://media.giphy.com/media/6UFvIvZUxdn9oniTAH/giphy.gif) | ![AppNotRunning](https://media.giphy.com/media/omJKH5bAvrnlPB1nRd/giphy.gif)
+![App Running](https://media.giphy.com/media/omJKH5bAvrnlPB1nRd/giphy.gif) | ![AppNotRunning](https://media.giphy.com/media/6UFvIvZUxdn9oniTAH/giphy.gif)
 |---|---|
 
 ## Quick start
@@ -81,7 +81,7 @@ import com.divyanshushekhar.flutter_process_text.FlutterProcessTextPlugin;
 import io.flutter.embedding.android.FlutterActivity;
 import android.os.Bundle;
 
-public class ProcessText extends FlutterActivity {
+public class ProcessTextActivity extends FlutterActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
