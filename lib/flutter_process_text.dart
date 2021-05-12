@@ -32,7 +32,8 @@ class FlutterProcessText {
 
   /// Get the pending data by refreshing the process text
   static Future<String> get refreshProcessText async {
-    return await _channel.invokeMethod('getRefreshProcessText');
+    var result = await _channel.invokeMethod('getRefreshProcessText');
+    return result == null ? "" : result.toString();
   }
 
   /// Listen to the process text stream to get continuous data.
