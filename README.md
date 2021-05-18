@@ -150,11 +150,13 @@ OR
 
 ```dart
 FlutterProcessText.initialize(
-      showToast: true,
-      confirmationMessage: "Text Added",
-      refreshMessage: "Got all Text",
-      errorMessage: "Some Error",
-    );
+    showConfirmationToast: true,
+    showRefreshToast: true,
+    showErrorToast: true,
+    confirmationMessage: "Text Added",
+    refreshMessage: "Got all Text",
+    errorMessage: "Some Error",
+);
 ```
 
 ### Step 6: Working with stream
@@ -162,8 +164,8 @@ FlutterProcessText.initialize(
 There are two ways to work with stream, either create a `StreamSubscription` to listen for the incoming data or store the `Stream` and use it in `StreamBuilder`.
 
 ```dart
-  StreamSubscription _processText;
-  String text = '';
+  late final StreamSubscription _processText;
+  String text? = '';
 
   @override
   void initState() {
@@ -192,14 +194,14 @@ There are two ways to work with stream, either create a `StreamSubscription` to 
 OR
 
 ```dart
-Stream<String> _processText;
+late final Stream<String> _processText;
 _processText = FlutterProcessText.getProcessTextStream;
 ```
 
 Now use the stream in the `StreamBuilder`.
 
 ```dart
-StreamBuilder<String>(
+StreamBuilder<String?>(
   stream: _processText,
   builder: (context, snapshot) {
     return Text('Fetched Data: ${snapshot.data}');
@@ -212,7 +214,7 @@ StreamBuilder<String>(
 Get the pending data by calling the `refreshProcessText` method in `FlutterProcessText` class.
 
 ```dart
-String text = await FlutterProcessText.refreshProcessText;
+String? text = await FlutterProcessText.refreshProcessText;
 ```
 
 ## Project Created & Maintained By

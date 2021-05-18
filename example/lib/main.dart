@@ -24,7 +24,7 @@ class _MyAppState extends State<MyApp> {
 
 class HomePage extends StatefulWidget {
   const HomePage({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -32,14 +32,16 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  Stream<String> _processText;
-  String refreshedData = '';
+  late final Stream<String> _processText;
+  String? refreshedData = '';
 
   @override
   void initState() {
     super.initState();
     FlutterProcessText.initialize(
-      showToast: true,
+      showConfirmationToast: true,
+      showRefreshToast: true,
+      showErrorToast: true,
       confirmationMessage: "Text Added",
       refreshMessage: "Got all Text",
       errorMessage: "Some Error",
@@ -57,7 +59,8 @@ class _HomePageState extends State<HomePage> {
               ? IconButton(
                   icon: Icon(Icons.refresh),
                   onPressed: () async {
-                    String result = await FlutterProcessText.refreshProcessText;
+                    dynamic result =
+                        await FlutterProcessText.refreshProcessText;
                     setState(() {
                       refreshedData = result;
                     });
@@ -70,7 +73,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           SizedBox(height: 100),
           Center(
-            child: StreamBuilder<String>(
+            child: StreamBuilder<String?>(
               stream: _processText,
               builder: (context, snapshot) {
                 return Text('Fetched Data: ${snapshot.data}');
@@ -78,7 +81,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           SizedBox(height: 150),
-          Text("Refreshed Data: $refreshedData"),
+          Text("Refreshed Data: ${refreshedData.toString()}"),
         ],
       ),
     );
