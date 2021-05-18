@@ -12,18 +12,22 @@ class FlutterProcessText {
   static Stream<String>? _processTextStream;
 
   /// Initialize FlutterProcessText Plugins.
-  /// showToast<bool> - if true, will show a toast message, else not.
+  /// bool Confirmation, Refresh and Error Toast.
   /// set ConfirmationMessage to show a confirmation message in the Toast.
   /// set refreshMessage to show a refresh message in the Toast.
   /// set errorMessage to show a error message in the Toast.
   static Future<void> initialize({
-    bool showToast = true,
+    bool showConfirmationToast = true,
+    bool showRefreshToast = true,
+    bool showErrorToast = true,
     String confirmationMessage = "Text Fetched",
     String refreshMessage = "Refreshed",
     String errorMessage = "Unable to fetch text!",
   }) async {
     return await _channel.invokeMethod('initialize', {
-      'showToast': showToast.toString(),
+      'showConfirmationToast': showConfirmationToast.toString(),
+      'showRefreshToast': showRefreshToast.toString(),
+      'showErrorToast': showErrorToast.toString(),
       'confirmationMessage': confirmationMessage,
       'refreshMessage': refreshMessage,
       'errorMessage': errorMessage,
@@ -31,7 +35,7 @@ class FlutterProcessText {
   }
 
   /// Get the pending data by refreshing the process text
-  static Future<String> get refreshProcessText async {
+  static Future<String?> get refreshProcessText async {
     return await _channel.invokeMethod('getRefreshProcessText');
   }
 

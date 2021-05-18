@@ -52,13 +52,20 @@ public class FlutterProcessTextPlugin implements FlutterPlugin, ActivityAware {
 
 
   /* ------------- User Initialization -------------- */
-  private static boolean showToast = true;
+  private static boolean showConfirmationToast = true;
+  private static boolean showRefreshToast = true;
+  private static boolean showErrorToast = true;
   private static String confirmationMessage = null;
   private static String refreshMessage = null;
   private static String errorMessage = null;
 
-  public static void setUserInitialization(boolean showToast, String confirmationMessage, String refreshMessage, String errorMessage) {
-    FlutterProcessTextPlugin.showToast = showToast;
+  public static void setUserInitialization(boolean showConfirmationToast, boolean showRefreshToast,
+                                           boolean showErrorToast, String confirmationMessage,
+                                           String refreshMessage, String errorMessage) {
+
+    FlutterProcessTextPlugin.showConfirmationToast = showConfirmationToast;
+    FlutterProcessTextPlugin.showRefreshToast = showRefreshToast;
+    FlutterProcessTextPlugin.showErrorToast = showErrorToast;
     FlutterProcessTextPlugin.confirmationMessage = confirmationMessage;
     FlutterProcessTextPlugin.refreshMessage = refreshMessage;
     FlutterProcessTextPlugin.errorMessage = errorMessage;
@@ -67,19 +74,19 @@ public class FlutterProcessTextPlugin implements FlutterPlugin, ActivityAware {
 
   /* ------------- Toast Messages -------------- */
   public static void showConfirmationToast() {
-    if(showToast) {
+    if(showConfirmationToast) {
       Toast.makeText(context, confirmationMessage, Toast.LENGTH_LONG).show();
     }
   }
 
   public static void showRefreshToast() {
-    if(showToast) {
+    if(showRefreshToast) {
       Toast.makeText(context, refreshMessage, Toast.LENGTH_LONG).show();
     }
   }
 
   public static void showErrorToast() {
-    if(showToast) {
+    if(showErrorToast) {
       Toast.makeText(context, errorMessage, Toast.LENGTH_LONG).show();
     }
   }
@@ -120,7 +127,7 @@ public class FlutterProcessTextPlugin implements FlutterPlugin, ActivityAware {
     methodChannel = new MethodChannel(binaryMessenger, CHANNEL_ID);
     eventChannel = new EventChannel(binaryMessenger,STREAM_ID);
 
-    methodHandler = new MethodCallHandlerImplementation(context, activity);
+    methodHandler = new MethodCallHandlerImplementation();
     eventHandler = new EventCallHandlerImplementation(context, activity);
 
     methodChannel.setMethodCallHandler(methodHandler);
@@ -161,7 +168,6 @@ public class FlutterProcessTextPlugin implements FlutterPlugin, ActivityAware {
   @Override
   public void onAttachedToActivity(@NonNull ActivityPluginBinding binding) {
     activity = binding.getActivity();
-    methodHandler.setActivity(activity);
     EventCallHandlerImplementation.setActivity(activity);
   }
 
@@ -177,7 +183,6 @@ public class FlutterProcessTextPlugin implements FlutterPlugin, ActivityAware {
 
   @Override
   public void onDetachedFromActivity() {
-    methodHandler.setActivity(null);
     EventCallHandlerImplementation.setActivity(null);
   }
 

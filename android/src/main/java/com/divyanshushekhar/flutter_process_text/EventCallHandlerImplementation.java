@@ -18,6 +18,7 @@ public class EventCallHandlerImplementation implements StreamHandler {
     private static EventSink mEventSink = null;
     @SuppressLint("StaticFieldLeak")
     private static Activity activity = null;
+    @SuppressLint("StaticFieldLeak")
     private static Context context = null;
 
     EventCallHandlerImplementation(Context context,Activity activity) {
@@ -46,7 +47,6 @@ public class EventCallHandlerImplementation implements StreamHandler {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             textIntent = activity.getIntent().getStringExtra(Intent.EXTRA_PROCESS_TEXT);
         } else {
-            textIntent = null;
             Log.e(TAG,"Compatibility Issue:");
             Log.i(TAG,"Make sure device android version >= M (Marshmallow)");
         }

@@ -15,25 +15,19 @@ public class MethodCallHandlerImplementation implements MethodChannel.MethodCall
 
     private static final String TAG = FlutterProcessTextPlugin.getPluginTag();
 
-    private final Context context;
-    private Activity activity;
-
-    MethodCallHandlerImplementation(Context context, Activity activity) {
-        this.context = context;
-        this.activity = activity;
-    }
-
-    void setActivity(Activity activity) {
-        this.activity = activity;
-    }
+    public MethodCallHandlerImplementation() {}
 
     @Override
     public void onMethodCall(@NonNull MethodCall call, @NonNull MethodChannel.Result result) {
         if (call.method.equals("initialize")) {
             Map<String, String> arguments = call.arguments();
             // Setting User Initialization coming from flutter side
-            FlutterProcessTextPlugin.setUserInitialization(Boolean.parseBoolean(arguments.get("showToast")),
-                    arguments.get("confirmationMessage"), arguments.get("refreshMessage"),
+            FlutterProcessTextPlugin.setUserInitialization(
+                    Boolean.parseBoolean(arguments.get("showConfirmationToast")),
+                    Boolean.parseBoolean(arguments.get("showRefreshToast")),
+                    Boolean.parseBoolean(arguments.get("showErrorToast")),
+                    arguments.get("confirmationMessage"),
+                    arguments.get("refreshMessage"),
                     arguments.get("errorMessage"));
         } else if (call.method.equals("getRefreshProcessText")) {
             try {
