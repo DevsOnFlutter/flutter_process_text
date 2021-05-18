@@ -1,3 +1,9 @@
+## v1.1.0
+
+* showToast changed to specific toast messages,
+  (showConfirmationToast, showRefreshToast, showErrorToast).
+* Fixed Bug [#3](https://github.com/divshekhar/flutter_process_text/issues/3)
+  
 ## v1.0.0
 
 * Migrated to null-safety
