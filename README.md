@@ -1,6 +1,6 @@
 # Flutter Process Text Plugin
 
-<img src="https://i.imgur.com/Sy52KAT.png" title="Flutter_Process_Text" />
+<img src="https://i.imgur.com/6rTQCDc.png" title="Flutter_Process_Text" />
 
 ![GitHub](https://img.shields.io/github/license/DevsOnFlutter/flutter_process_text?label=License&style=plastic) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/DevsOnFlutter/flutter_process_text?style=plastic) ![GitHub language count](https://img.shields.io/github/languages/count/DevsOnFlutter/flutter_process_text?style=plastic) ![GitHub last commit](https://img.shields.io/github/last-commit/DevsOnFlutter/flutter_process_text?style=plastic)
 
