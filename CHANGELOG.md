@@ -1,3 +1,7 @@
+## v1.1.1
+
+* Readme Updated
+
 ## v1.1.0
 
 * showToast changed to specific toast messages,
