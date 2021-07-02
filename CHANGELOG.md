@@ -1,3 +1,7 @@
+## v1.1.2
+
+* Compatibility added in Readme
+  
 ## v1.1.1
 
 * Readme Updated

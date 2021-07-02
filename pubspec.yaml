@@ -1,5 +1,5 @@
 name: flutter_process_text
-version: 1.1.1
+version: 1.1.2
 description: Flutter plugin to listen the process text stream to get continuous process text intent data.
 repository: https://github.com/DevsOnFlutter/flutter_process_text
 documentation: https://github.com/DevsOnFlutter/flutter_process_text/blob/main/README.md
