@@ -4,6 +4,11 @@
 
 ![GitHub](https://img.shields.io/github/license/DevsOnFlutter/flutter_process_text?label=License&style=plastic) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/DevsOnFlutter/flutter_process_text?style=plastic) ![GitHub language count](https://img.shields.io/github/languages/count/DevsOnFlutter/flutter_process_text?style=plastic) ![GitHub last commit](https://img.shields.io/github/last-commit/DevsOnFlutter/flutter_process_text?style=plastic)
 
+##  Compatibility
+
+✅ &nbsp; Android </br>
+❌ &nbsp; iOS (active issue: [iOS support](https://github.com/DevsOnFlutter/flutter_process_text/issues/2))
+
 ## Show some :heart: and :star: the repo
 
 [![GitHub followers](https://img.shields.io/github/followers/divshekhar.svg?style=social&label=Follow)](https://github.com/divshekhar/)
